@@ -10,6 +10,7 @@
     --clr-white-75: hsl(231, 100%, 99%);
     --clr-white: #ffffff;
     --fs-small: 0.875rem;
+    --large-breakpoint: 1300px;
 }
 
 @font-face {

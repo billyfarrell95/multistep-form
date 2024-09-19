@@ -2,8 +2,33 @@
     background-image: url("../../assets/images/bg-sidebar-mobile.svg");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 150px;
+    height: 175px;
     color: white;
+}
+
+.step-indicators-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-bottom: 4rem;
+    gap: 1.5rem;
+}
+
+.step-indicator__num {
+    border: 1px solid var(--clr-white);
+    padding: 1.2rem;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.step-indicator__description {
+    display: none;
 }
 
 @media screen and (min-width: 1300px) {
@@ -12,5 +37,31 @@
         background-size: cover;
         height: 100%;
         border-radius: 1rem;
+        padding: 3rem;
+    }
+    .step-indicator {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .step-indicator__description {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        text-transform: uppercase;
+    }
+    .step-indicators-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 3rem;
+    }
+    .step-indicator__step {
+        font-size: var(--fs-small);
+        color: var(--clr-light-gray);
+    }
+    .step-indicator__step-name {
+        font-weight: 700;
     }
 }
