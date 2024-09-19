@@ -1,0 +1,9 @@
+.step-header p {
+    color: var(--clr-gray);
+}
+
+@media screen and (min-width: 1300px) {
+    .step-header p {
+        font-size: 1.15rem;
+    }
+}

@@ -1,0 +1,16 @@
+.sidebar {
+    background-image: url("../../assets/images/bg-sidebar-mobile.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 150px;
+    color: white;
+}
+
+@media screen and (min-width: 1300px) {
+    .sidebar {
+        background-image: url("../../assets/images/bg-sidebar-desktop.svg");
+        background-size: cover;
+        height: 100%;
+        border-radius: 1rem;
+    }
+}

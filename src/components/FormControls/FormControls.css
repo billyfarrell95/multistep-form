@@ -1,0 +1,40 @@
+.form-controls {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: var(--clr-white);
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 1.2rem;
+}
+
+@media screen and (min-width: 1300px) {
+    .form-controls {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        width: auto;
+        padding-inline: 0;
+        padding-block: 1.2rem;
+    }
+}
+
+.form-controls__back {
+    background-color: transparent;
+    color: var(--clr-gray);
+}
+
+.form-controls__back:hover {
+    color: var(--clr-dark-blue);
+}
+
+.form-controls__next {
+    background-color: var(--clr-dark-blue);
+    color: var(--clr-white);;
+}
+
+.form-controls__next:hover {
+    opacity: 0.85;
+}
