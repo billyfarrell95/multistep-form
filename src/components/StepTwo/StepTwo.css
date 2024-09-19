@@ -1,0 +1,62 @@
+.plan-selector-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.plan-selector-btn {
+    background-color: transparent;
+    padding: 1rem;
+    border: 1px solid var(--clr-light-gray);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.plan-selector-btn__details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    align-items: flex-start;
+}
+
+.plan-selector-btn__name {
+    color: var(--clr-dark-blue);
+    font-size: 1.2rem;
+}
+
+.plan-selector-btn__price {
+    color: var(--clr-gray);
+    font-size: var(--fs-small);
+    font-weight: 400;
+}
+
+.plan-selector-btn:hover {
+    border: 1px solid var(--clr-dark-blue);
+}
+
+.plan-selector-btn img {
+    width: 45px;
+    height: 45px;
+}
+
+@media screen and (min-width: 1300px) {
+    .plan-selector-btn img {
+        width: 60px;
+        height: 60px;
+    }
+    .plan-selector-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.6rem;
+    }
+    .plan-selector-btn {
+        padding: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5rem;
+        width: 100%;
+    }
+}

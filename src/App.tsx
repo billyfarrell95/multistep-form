@@ -1,6 +1,7 @@
 import './App.css';
 import Sidebar from './components/Sidebar/Sidebar';
 import StepOne from './components/StepOne/StepOne';
+import StepTwo from './components/StepTwo/StepTwo';
 import FormControls from './components/FormControls/FormControls';
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
       <div className="main-wrapper">
         <Sidebar />
         <div className="step-wrapper">
-          <StepOne />
+            {/* <StepOne /> */}
+            <StepTwo />
           <FormControls />
         </div>
       </div>
