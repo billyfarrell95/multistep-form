@@ -6,20 +6,31 @@ import StepThree from './components/StepThree/StepThree';
 import StepFour from './components/StepFour/StepFour';
 import StepFive from './components/StepFive/StepFIve';
 import FormControls from './components/FormControls/FormControls';
+import { useState } from 'react';
 
 function App() {
-
+  const [currentStep, setCurrentStep] = useState(1)
   return (
     <>
       <div className="main-wrapper">
         <Sidebar />
         <div className="step-wrapper">
-            {/* <StepOne /> */}
-            {/* <StepTwo /> */}
-            {/* <StepThree /> */}
-            {/* <StepFour /> */}
-            <StepFive />
-          <FormControls />
+            {currentStep === 1 && (
+              <StepOne />
+            )}
+            {currentStep === 2 && (
+              <StepTwo />
+            )}
+            {currentStep === 3 && (
+              <StepThree />
+            )}
+            {currentStep === 4 && (
+              <StepFour />
+            )}
+            {currentStep === 5 && (
+              <StepFive />
+            )}
+          <FormControls currentStep={currentStep} setCurrentStep={setCurrentStep} />
         </div>
       </div>
     </>

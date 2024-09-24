@@ -31,10 +31,14 @@
 }
 
 .form-controls__next {
+    margin-left: auto;
+}
+
+.form-controls__next, .form-controls__confirm {
     background-color: var(--clr-dark-blue);
     color: var(--clr-white);;
 }
 
-.form-controls__next:hover {
+.form-controls__next:hover, .form-controls__confirm:hover {
     opacity: 0.85;
 }
