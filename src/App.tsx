@@ -4,7 +4,7 @@ import StepOne from './components/StepOne/StepOne';
 import StepTwo from './components/StepTwo/StepTwo';
 import StepThree from './components/StepThree/StepThree';
 import StepFour from './components/StepFour/StepFour';
-import StepFive from './components/StepFive/StepFIve';
+import StepFive from './components/StepFive/StepFive';
 import FormControls from './components/FormControls/FormControls';
 import { useState } from 'react';
 
