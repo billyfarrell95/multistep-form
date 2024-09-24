@@ -4,6 +4,7 @@ import StepOne from './components/StepOne/StepOne';
 import StepTwo from './components/StepTwo/StepTwo';
 import StepThree from './components/StepThree/StepThree';
 import StepFour from './components/StepFour/StepFour';
+import StepFive from './components/StepFive/StepFIve';
 import FormControls from './components/FormControls/FormControls';
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
             {/* <StepOne /> */}
             {/* <StepTwo /> */}
             {/* <StepThree /> */}
-            <StepFour />
+            {/* <StepFour /> */}
+            <StepFive />
           <FormControls />
         </div>
       </div>
