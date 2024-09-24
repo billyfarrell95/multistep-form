@@ -42,3 +42,7 @@
 .form-controls__next:hover, .form-controls__confirm:hover {
     opacity: 0.85;
 }
+
+.form-controls__confirm {
+    background-color: var(--clr-purple);
+}

@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <div className="main-wrapper">
-        <Sidebar />
+        <Sidebar currentStep={currentStep} />
         <div className="step-wrapper">
             {currentStep === 1 && (
               <StepOne />

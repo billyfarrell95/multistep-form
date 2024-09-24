@@ -27,6 +27,12 @@
     font-weight: 700;
 }
 
+.step-indicator__num.active {
+    background-color: var(--clr-light-blue);
+    color: var(--clr-dark-blue);
+    border-color: var(--clr-light-blue);
+}
+
 .step-indicator__description {
     display: none;
 }
