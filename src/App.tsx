@@ -25,7 +25,7 @@ function App() {
               <StepThree />
             )}
             {currentStep === 4 && (
-              <StepFour />
+              <StepFour setCurrentStep={setCurrentStep} />
             )}
             {currentStep === 5 && (
               <StepFive />

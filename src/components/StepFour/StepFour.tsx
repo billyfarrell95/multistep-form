@@ -1,8 +1,16 @@
 import "./StepFour.css";
 import StepHeader from "../StepHeader/StepHeader";
-import ChangeButton from "./ChangeButton";
+import { Dispatch, SetStateAction } from "react";
 
-function StepFour() {
+interface StepFourProps {
+    setCurrentStep: Dispatch<SetStateAction<number>>,
+}
+
+function StepFour({ setCurrentStep }: StepFourProps) {
+
+    const handleChangePlan = () => {
+        setCurrentStep(2);
+    }
 
   return (
     <div>
@@ -11,7 +19,7 @@ function StepFour() {
             <div className="step-four-wrapper__plan-summary">
                 <div className="step-four-wrapper__plan-summary-details">
                     <span>Plan name (Yearly or monthy)</span>
-                    <ChangeButton />
+                    <button className="step-four-wrapper__change-button" onClick={handleChangePlan}>Change</button>
                 </div>
                 <span className="step-four-wrapper__plan-summary-price">$9/mo</span>
             </div>
