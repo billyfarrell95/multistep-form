@@ -1,0 +1,54 @@
+.step-three-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.addon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--clr-light-gray);
+    transition: 150ms all;
+}
+
+.addon-btn:hover {
+    border: 1px solid var(--clr-purple);
+    background-color: var(--clr-white-75);
+}
+
+.addon-btn__checkbox {
+    height: 1.2rem;
+    width: 1.2rem;
+    accent-color: var(--clr-purple);
+    cursor: pointer;
+}
+
+.addon-btn__details {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.addon-btn__name {
+    font-size: 1.1rem;
+    color: var(--clr-dark-blue);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.addon-btn__description {
+    color: var(--clr-gray);
+    text-align: left;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.addon-btn__price {
+    color: var(--clr-purple);
+    font-weight: 400;
+}
