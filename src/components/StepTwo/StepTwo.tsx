@@ -1,5 +1,6 @@
 import StepHeader from "../StepHeader/StepHeader";
 import PlanSelector from "./PlanSelector";
+import MonthlyYearlySelector from "./MonthlyYearlySelector";
 import "./StepTwo.css";
 
 function StepTwo() {
@@ -12,6 +13,7 @@ function StepTwo() {
             <PlanSelector iconPath={"../../src/assets/images/icon-advanced.svg"} planName={"Advanced"} planPrice={12}  />
             <PlanSelector iconPath={"../../src/assets/images/icon-pro.svg"} planName={"Pro"} planPrice={15}  />
         </div>
+        <MonthlyYearlySelector />
     </div>
   )
 }

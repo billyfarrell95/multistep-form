@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 .plan-selector-btn {
@@ -12,6 +13,10 @@
     align-items: center;
     gap: 1rem;
     width: 100%;
+}
+
+.plan-selector-btn.active {
+    background-color: var(--clr-white-75);
 }
 
 .plan-selector-btn__details {
@@ -59,4 +64,48 @@
         gap: 5rem;
         width: 100%;
     }
+}
+
+.monthly-yearly-selector {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    background-color: var(--clr-white-75);
+    padding: 1rem;
+    justify-content: center;
+    border-radius: 0.5rem;
+}
+
+.monthly-yearly-selector__input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.monthly-yearly-selector__label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 50px;
+	height: 25px;
+	background: var(--clr-dark-blue);
+	display: block;
+	border-radius: 25px;
+	position: relative;
+}
+
+.monthly-yearly-selector__label:after {
+	content: '';
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 17px;
+	height: 17px;
+	background: #fff;
+	border-radius: 23px;
+	transition: 0.3s;
+}
+
+.monthly-yearly-selector__input:checked + .monthly-yearly-selector__label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
 }
