@@ -5,6 +5,7 @@ interface StepIndicatorProps {
   currentStep: number,
   setCurrentStep: Dispatch<SetStateAction<number>>,
 }
+
 function FormControls({ currentStep, setCurrentStep }: StepIndicatorProps) {
     const handleNextStep = () => {
       setCurrentStep(currentStep + 1)

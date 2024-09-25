@@ -8,15 +8,34 @@ import StepFive from './components/StepFive/StepFive';
 import FormControls from './components/FormControls/FormControls';
 import { useState } from 'react';
 
+export const initialFormData = {
+  name: "",
+  email: "",
+  phone: "",
+  plan: "",
+  monthly: true,
+  yearly: false,
+  onlineService: false,
+  largerStorage: false,
+  customizableProfile: false,
+};
+
 function App() {
-  const [currentStep, setCurrentStep] = useState(1)
+  const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState({ ...initialFormData});
+
   return (
     <>
       <div className="main-wrapper">
         <Sidebar currentStep={currentStep} />
         <div className="step-wrapper">
             {currentStep === 1 && (
-              <StepOne />
+              <StepOne 
+                formName={formData.name} 
+                formEmail={formData.email} 
+                formPhone={formData.phone} 
+                setFormData={setFormData}
+                />
             )}
             {currentStep === 2 && (
               <StepTwo />
@@ -30,7 +49,9 @@ function App() {
             {currentStep === 5 && (
               <StepFive />
             )}
-          <FormControls currentStep={currentStep} setCurrentStep={setCurrentStep} />
+          <FormControls 
+            currentStep={currentStep} 
+            setCurrentStep={setCurrentStep} />
         </div>
       </div>
     </>
