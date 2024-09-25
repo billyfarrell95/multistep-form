@@ -4,11 +4,17 @@ import { SetStateAction, Dispatch } from "react";
 interface StepIndicatorProps {
   currentStep: number,
   setCurrentStep: Dispatch<SetStateAction<number>>,
+  formData: { stepOne: { name: string; email: string; phone: string; }; stepTwo: { plan: string; monthly: boolean; yearly: boolean; }; stepThree: { onlineService: boolean; largerStorage: boolean; customizableProfile: boolean; }; },
+  setStepOneErrors: Dispatch<SetStateAction<boolean>>;
 }
 
-function FormControls({ currentStep, setCurrentStep }: StepIndicatorProps) {
+function FormControls({ currentStep, setCurrentStep, formData, setStepOneErrors }: StepIndicatorProps) {
     const handleNextStep = () => {
-      setCurrentStep(currentStep + 1)
+      if (formData.stepOne.name && formData.stepOne.email && formData.stepOne.phone) {
+        setCurrentStep(currentStep + 1)
+      } else {
+        setStepOneErrors(true)
+      }
     }
     
     const handlePreviousStep = () => {

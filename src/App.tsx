@@ -6,23 +6,34 @@ import StepThree from './components/StepThree/StepThree';
 import StepFour from './components/StepFour/StepFour';
 import StepFive from './components/StepFive/StepFive';
 import FormControls from './components/FormControls/FormControls';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const initialFormData = {
-  name: "",
-  email: "",
-  phone: "",
-  plan: "",
-  monthly: true,
-  yearly: false,
-  onlineService: false,
-  largerStorage: false,
-  customizableProfile: false,
+  stepOne: {
+    name: "",
+    email: "",
+    phone: "",
+  },
+  stepTwo: {
+    plan: "",
+    monthly: true,
+    yearly: false,
+  },
+  stepThree: {
+    onlineService: false,
+    largerStorage: false,
+    customizableProfile: false,
+  }
 };
 
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({ ...initialFormData});
+  const [stepOneErrors, setStepOneErrors] = useState(false);
+
+  useEffect(() => {
+    console.log(formData.stepOne)
+  }, [formData])
 
   return (
     <>
@@ -31,11 +42,11 @@ function App() {
         <div className="step-wrapper">
             {currentStep === 1 && (
               <StepOne 
-                formName={formData.name} 
-                formEmail={formData.email} 
-                formPhone={formData.phone} 
+                formName={formData.stepOne.name} 
+                formEmail={formData.stepOne.email} 
+                formPhone={formData.stepOne.phone} 
                 setFormData={setFormData}
-                />
+                stepOneErrors={stepOneErrors} />
             )}
             {currentStep === 2 && (
               <StepTwo />
@@ -51,7 +62,9 @@ function App() {
             )}
           <FormControls 
             currentStep={currentStep} 
-            setCurrentStep={setCurrentStep} />
+            setCurrentStep={setCurrentStep}
+            formData={formData}
+            setStepOneErrors={setStepOneErrors} />
         </div>
       </div>
     </>
