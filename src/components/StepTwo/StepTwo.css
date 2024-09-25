@@ -16,7 +16,11 @@
 }
 
 .plan-selector-btn.active {
-    background-color: var(--clr-white-75);
+    background-color: var(--clr-white-50);
+}
+
+.plan-selector-btn.active:hover {
+    border: 1px solid var(--clr-light-gray);
 }
 
 .plan-selector-btn__details {
@@ -38,7 +42,7 @@
 }
 
 .plan-selector-btn:hover {
-    border: 1px solid var(--clr-dark-blue);
+    border: 1px solid var(--clr-gray);
 }
 
 .plan-selector-btn img {

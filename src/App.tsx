@@ -6,7 +6,7 @@ import StepThree from './components/StepThree/StepThree';
 import StepFour from './components/StepFour/StepFour';
 import StepFive from './components/StepFive/StepFive';
 import FormControls from './components/FormControls/FormControls';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export const initialFormData = {
   stepOne: {
@@ -28,12 +28,9 @@ export const initialFormData = {
 
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({ ...initialFormData});
+  const [formData, setFormData] = useState({ ...initialFormData });
   const [stepOneErrors, setStepOneErrors] = useState(false);
-
-  useEffect(() => {
-    console.log(formData.stepOne)
-  }, [formData])
+  const [stepTwoErrors, setStepTwoErrors] = useState(false);
 
   return (
     <>
@@ -49,7 +46,11 @@ function App() {
                 stepOneErrors={stepOneErrors} />
             )}
             {currentStep === 2 && (
-              <StepTwo />
+              <StepTwo 
+                formPlan={formData.stepTwo.plan}
+                setFormData={setFormData}
+                stepTwoErrors={stepTwoErrors}
+                setStepTwoErrors={setStepTwoErrors}   />
             )}
             {currentStep === 3 && (
               <StepThree />
@@ -64,7 +65,8 @@ function App() {
             currentStep={currentStep} 
             setCurrentStep={setCurrentStep}
             formData={formData}
-            setStepOneErrors={setStepOneErrors} />
+            setStepOneErrors={setStepOneErrors}
+            setStepTwoErrors={setStepTwoErrors} />
         </div>
       </div>
     </>

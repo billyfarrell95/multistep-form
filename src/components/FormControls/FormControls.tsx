@@ -6,14 +6,25 @@ interface StepIndicatorProps {
   setCurrentStep: Dispatch<SetStateAction<number>>,
   formData: { stepOne: { name: string; email: string; phone: string; }; stepTwo: { plan: string; monthly: boolean; yearly: boolean; }; stepThree: { onlineService: boolean; largerStorage: boolean; customizableProfile: boolean; }; },
   setStepOneErrors: Dispatch<SetStateAction<boolean>>;
+  setStepTwoErrors: Dispatch<SetStateAction<boolean>>;
 }
 
-function FormControls({ currentStep, setCurrentStep, formData, setStepOneErrors }: StepIndicatorProps) {
+function FormControls({ currentStep, setCurrentStep, formData, setStepOneErrors, setStepTwoErrors }: StepIndicatorProps) {
     const handleNextStep = () => {
-      if (formData.stepOne.name && formData.stepOne.email && formData.stepOne.phone) {
-        setCurrentStep(currentStep + 1)
-      } else {
-        setStepOneErrors(true)
+      if (currentStep === 1) {
+        if (formData.stepOne.name && formData.stepOne.email && formData.stepOne.phone) {
+          setCurrentStep(currentStep + 1)
+        } else {
+          setStepOneErrors(true)
+        }
+      }
+      if (currentStep === 2) {
+        console.log("two")
+        if (formData.stepTwo.plan) {
+          setCurrentStep(currentStep + 1);
+        } else {
+          setStepTwoErrors(true)
+        }
       }
     }
     
