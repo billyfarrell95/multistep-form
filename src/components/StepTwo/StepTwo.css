@@ -78,6 +78,8 @@
     padding: 1rem;
     justify-content: center;
     border-radius: 0.5rem;
+    font-weight: 500;
+    color: var(--clr-gray);
 }
 
 .monthly-yearly-selector__input[type=checkbox]{
@@ -112,4 +114,8 @@
 .monthly-yearly-selector__input:checked + .monthly-yearly-selector__label:after {
 	left: calc(100% - 5px);
 	transform: translateX(-100%);
+}
+
+.monthly-yearly-selector__active {
+    color: var(--clr-dark-blue);
 }

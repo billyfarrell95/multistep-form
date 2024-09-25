@@ -1,12 +1,28 @@
-import "./StepTwo.css"
+import { Dispatch, SetStateAction } from "react";
+import "./StepTwo.css";
 
-function MonthlyYearlySelector() {
+interface MonthlyYearlySelectorProps {
+  isMonthly: boolean,
+  setIsMonthly: Dispatch<SetStateAction<boolean>>
+}
+
+function MonthlyYearlySelector({ isMonthly, setIsMonthly }: MonthlyYearlySelectorProps) {
+  const handleToggle = () => {
+    setIsMonthly((prev) => !prev);
+  };
 
   return (
     <div className="monthly-yearly-selector">
-        <span>Monthly</span>
-        <input type="checkbox" id="switch" className="monthly-yearly-selector__input" /><label htmlFor="switch" className="monthly-yearly-selector__label">Toggle</label>
-        <span>Yearly</span>
+        <span className={`${isMonthly ? 'monthly-yearly-selector__active' : ''}`}>Monthly</span>
+        <input 
+          type="checkbox" 
+          id="switch" 
+          className="monthly-yearly-selector__input" 
+          checked={isMonthly}
+          onChange={handleToggle}
+        />
+        <label htmlFor="switch" className="monthly-yearly-selector__label">Toggle</label>
+        <span className={`${!isMonthly ? 'monthly-yearly-selector__active' : ''}`}>Yearly</span>
     </div>
   )
 }

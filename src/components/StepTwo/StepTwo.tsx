@@ -1,7 +1,7 @@
 import StepHeader from "../StepHeader/StepHeader";
 import PlanSelector from "./PlanSelector";
 import MonthlyYearlySelector from "./MonthlyYearlySelector";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import "./StepTwo.css";
 
 interface StepTwoProps {
@@ -12,6 +12,8 @@ interface StepTwoProps {
 }
 
 function StepTwo({ setFormData, formPlan, stepTwoErrors, setStepTwoErrors }: StepTwoProps) {
+  const [isMonthly, setIsMonthly] = useState(true);
+
   const handlePlanSelection = (planSelection: string) => {
     setFormData((prevFormData) => ({
       ...prevFormData, 
@@ -22,7 +24,7 @@ function StepTwo({ setFormData, formPlan, stepTwoErrors, setStepTwoErrors }: Ste
     }));
     setStepTwoErrors(false)
   }
-
+// @todo: handle monthly/yearly plan changes
   return (
     <div>
         <StepHeader title={"Select Your Plan"} description={"You have the option of monthly or yearly billing."} />
@@ -34,7 +36,7 @@ function StepTwo({ setFormData, formPlan, stepTwoErrors, setStepTwoErrors }: Ste
             <PlanSelector iconPath={"../../src/assets/images/icon-advanced.svg"} planName={"Advanced"} planPrice={12} handlePlanSelection={handlePlanSelection} activePlan={formPlan}  />
             <PlanSelector iconPath={"../../src/assets/images/icon-pro.svg"} planName={"Pro"} planPrice={15} handlePlanSelection={handlePlanSelection} activePlan={formPlan}  />
         </div>
-        <MonthlyYearlySelector  />
+        <MonthlyYearlySelector isMonthly={isMonthly} setIsMonthly={setIsMonthly} />
     </div>
   )
 }
