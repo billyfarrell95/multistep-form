@@ -40,6 +40,21 @@ export const planDetails = {
   },
 };
 
+export const addonDetails = {
+  online: {
+    monthly: 1,
+    yearly: 10,
+  },
+  storage: {
+    monthly: 2,
+    yearly: 20,
+  },
+  profile: {
+    monthly: 2,
+    yearly: 20,
+  },
+};
+
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({ ...initialFormData });
@@ -76,7 +91,8 @@ function App() {
                 setFormData={setFormData}
                 onlineService={formData.stepThree.onlineService} 
                 largerStorage={formData.stepThree.largerStorage}
-                customizableProfile={formData.stepThree.customizableProfile} />
+                customizableProfile={formData.stepThree.customizableProfile}
+                isPlanYearly={formData.stepTwo.isYearly} />
             )}
             {currentStep === 4 && (
               <StepFour 

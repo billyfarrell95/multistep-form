@@ -2,15 +2,17 @@ import "./StepThree.css";
 import AddonButton from "./AddonButton";
 import StepHeader from "../StepHeader/StepHeader";
 import { Dispatch, SetStateAction } from "react";
+import { addonDetails } from "../../App";
 
 interface StepThreeProps {
     setFormData: Dispatch<SetStateAction<{ stepOne: { name: string; email: string; phone: string; }; stepTwo: { plan: string; isYearly: boolean; }; stepThree: { onlineService: boolean; largerStorage: boolean; customizableProfile: boolean; }; }>>,
     onlineService: boolean,
     largerStorage: boolean,
     customizableProfile: boolean,
+    isPlanYearly: boolean,
 }
 
-function StepThree({ setFormData, onlineService, largerStorage, customizableProfile}: StepThreeProps) {
+function StepThree({ setFormData, onlineService, largerStorage, customizableProfile, isPlanYearly }: StepThreeProps) {
 
   return (
     <div>
@@ -20,7 +22,7 @@ function StepThree({ setFormData, onlineService, largerStorage, customizableProf
                 addonName="Online Service"
                 checkboxId="onlineService"
                 addonDescription="Access to multiplayer games"
-                addonPrice="+10/yr"
+                addonPrice={isPlanYearly ? `$${addonDetails.online.yearly}/yr` : `$${addonDetails.online.monthly}/mo`}
                 setFormData={setFormData}
                 isPlanSelected={onlineService}
             />
@@ -28,7 +30,7 @@ function StepThree({ setFormData, onlineService, largerStorage, customizableProf
                 addonName="Larger Storage"
                 checkboxId="largerStorage"
                 addonDescription="Extra 1TB of cloud save"
-                addonPrice="+20/yr"
+                addonPrice={isPlanYearly ? `$${addonDetails.storage.yearly}/yr` : `$${addonDetails.storage.monthly}/mo`}
                 setFormData={setFormData}
                 isPlanSelected={largerStorage}
             />
@@ -36,7 +38,7 @@ function StepThree({ setFormData, onlineService, largerStorage, customizableProf
                 addonName="Customizable Profile"
                 checkboxId="customizableProfile"
                 addonDescription="Custom theme on your profile"
-                addonPrice="+20/yr"
+                addonPrice={isPlanYearly ? `$${addonDetails.profile.yearly}/yr` : `$${addonDetails.profile.monthly}/mo`}
                 setFormData={setFormData}
                 isPlanSelected={customizableProfile}
             />
