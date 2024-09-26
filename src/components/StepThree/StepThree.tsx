@@ -10,8 +10,6 @@ interface StepThreeProps {
     customizableProfile: boolean,
 }
 
-// @todo: form state is retained between switching steps
-
 function StepThree({ setFormData, onlineService, largerStorage, customizableProfile}: StepThreeProps) {
 
   return (

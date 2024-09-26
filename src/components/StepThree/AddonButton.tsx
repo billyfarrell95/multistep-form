@@ -12,7 +12,7 @@ interface AddonButtonProps {
 
 function AddonButton({checkboxId, addonName, addonDescription, addonPrice, setFormData, isPlanSelected }: AddonButtonProps) {
 
-  const [isAddonSelected, setIsAddonSelected] = useState(false);
+  const [isAddonSelected, setIsAddonSelected] = useState(isPlanSelected);
 
   const handleChange = () => {
     setIsAddonSelected(!isAddonSelected)

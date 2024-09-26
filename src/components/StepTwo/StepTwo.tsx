@@ -2,34 +2,19 @@ import StepHeader from "../StepHeader/StepHeader";
 import PlanSelector from "./PlanSelector";
 import MonthlyYearlySelector from "./MonthlyYearlySelector";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { planDetails } from "../../App";
 import "./StepTwo.css";
 
 interface StepTwoProps {
   setFormData: Dispatch<SetStateAction<{ stepOne: { name: string; email: string; phone: string; }; stepTwo: { plan: string; isYearly: boolean; }; stepThree: { onlineService: boolean; largerStorage: boolean; customizableProfile: boolean; }; }>>,
   formPlan: string,
   stepTwoErrors: boolean
-  setStepTwoErrors: Dispatch<SetStateAction<boolean>>
+  setStepTwoErrors: Dispatch<SetStateAction<boolean>>,
+  isPlanYearly: boolean,
 }
 
-const planDetails = {
-  arcade: {
-    monthly: 9,
-    yearly: 90,
-  },
-  advanced: {
-    monthly: 12,
-    yearly: 120,
-  },
-  pro: {
-    monthly: 15,
-    yearly: 150,
-  },
-};
-
-// @todo: form state is retained between switching steps (monthly/yearly)
-
-function StepTwo({ setFormData, formPlan, stepTwoErrors, setStepTwoErrors }: StepTwoProps) {
-  const [isYearly, setIsYearly] = useState(false);
+function StepTwo({ setFormData, formPlan, stepTwoErrors, setStepTwoErrors, isPlanYearly }: StepTwoProps) {
+  const [isYearly, setIsYearly] = useState(isPlanYearly);
 
   const handlePlanSelection = (planSelection: string) => {
     setFormData((prevFormData) => ({
