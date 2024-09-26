@@ -27,6 +27,10 @@
     text-decoration: underline;
 }
 
+.step-four-wrapper__change-button:hover {
+    color: var(--clr-purple);
+}
+
 .step-four-wrapper__addons-summary {
     padding: 0.5rem 1.3rem 0.5rem 1.3rem;
     background-color: var(--clr-white-50);

@@ -33,7 +33,7 @@ function AddonButton({checkboxId, addonName, addonDescription, addonPrice, setFo
   }, [isAddonSelected])
 
   return (
-    <button className="addon-btn" onClick={handleClick}>
+    <button className={`${isAddonSelected? 'addon-btn active' : 'addon-btn'}`} onClick={handleClick}>
         <div className="addon-btn__details">
             <input 
               type="checkbox" 

@@ -15,9 +15,12 @@
     transition: 150ms all;
 }
 
+.addon-btn.active {
+    background-color: var(--clr-white-50);
+}
+
 .addon-btn:hover {
     border: 1px solid var(--clr-purple);
-    background-color: var(--clr-white-75);
 }
 
 .addon-btn__checkbox {
