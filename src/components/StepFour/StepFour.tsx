@@ -1,18 +1,18 @@
 import "./StepFour.css";
 import StepHeader from "../StepHeader/StepHeader";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { addonDetails, planDetails } from "../../App";
+import { planDetails, addonDetails } from "../../data/FormData";
 
 interface StepFourProps {
     setCurrentStep: Dispatch<SetStateAction<number>>,
     planName: string,
-    onlineService: boolean,
-    largerStorage: boolean,
-    customizableProfile: boolean,
+    isOnlineServiceSelected: boolean,
+    isLargerStorageSelected: boolean,
+    isCustomizableProfileSelected: boolean,
     isPlanYearly: boolean,
 }
 
-function StepFour({ setCurrentStep, planName, onlineService, largerStorage, customizableProfile, isPlanYearly }: StepFourProps) {
+function StepFour({ setCurrentStep, planName, isOnlineServiceSelected, isLargerStorageSelected, isCustomizableProfileSelected, isPlanYearly }: StepFourProps) {
 
     const handleChangePlan = () => {
         setCurrentStep(2);
@@ -45,17 +45,17 @@ function StepFour({ setCurrentStep, planName, onlineService, largerStorage, cust
         let total = planCost;
 
         if (isPlanYearly) {
-            if (onlineService) total += addonDetails.online.yearly;
-            if (largerStorage) total += addonDetails.storage.yearly;
-            if (customizableProfile) total += addonDetails.profile.yearly;
+            if (isOnlineServiceSelected) total += addonDetails.online.yearly;
+            if (isLargerStorageSelected) total += addonDetails.storage.yearly;
+            if (isCustomizableProfileSelected) total += addonDetails.profile.yearly;
         } else {
-            if (onlineService) total += addonDetails.online.monthly;
-            if (largerStorage) total += addonDetails.storage.monthly;
-            if (customizableProfile) total += addonDetails.profile.monthly;
+            if (isOnlineServiceSelected) total += addonDetails.online.monthly;
+            if (isLargerStorageSelected) total += addonDetails.storage.monthly;
+            if (isCustomizableProfileSelected) total += addonDetails.profile.monthly;
         }
 
         setTotalCost(total);
-    }, [planCost, onlineService, largerStorage, customizableProfile, isPlanYearly]);
+    }, [planCost, isOnlineServiceSelected, isLargerStorageSelected, isCustomizableProfileSelected, isPlanYearly]);
 
   return (
     <div>
@@ -74,7 +74,7 @@ function StepFour({ setCurrentStep, planName, onlineService, largerStorage, cust
             </div>
             <div className="step-four-wrapper__addons-summary">
                 <hr />
-                {onlineService && (
+                {isOnlineServiceSelected && (
                     <div className="step-four-wrapper__addon">
                         <span className="step-four-wrapper__addon-title">{addonDetails.online.name}</span>
                         {isPlanYearly ? (
@@ -84,7 +84,7 @@ function StepFour({ setCurrentStep, planName, onlineService, largerStorage, cust
                         )}
                     </div>
                 )}
-                {largerStorage && (
+                {isLargerStorageSelected && (
                     <div className="step-four-wrapper__addon">
                         <span className="step-four-wrapper__addon-title">{addonDetails.storage.name}</span>
                         {isPlanYearly ? (
@@ -94,7 +94,7 @@ function StepFour({ setCurrentStep, planName, onlineService, largerStorage, cust
                         )}
                     </div>
                 )}
-                {customizableProfile && (
+                {isCustomizableProfileSelected && (
                     <div className="step-four-wrapper__addon">
                         <span className="step-four-wrapper__addon-title">{addonDetails.profile.name}</span>
                         {isPlanYearly ? (

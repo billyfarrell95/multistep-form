@@ -10,24 +10,30 @@ interface StepIndicatorProps {
 }
 
 function FormControls({ currentStep, setCurrentStep, formData, setStepOneErrors, setStepTwoErrors }: StepIndicatorProps) {
+    
     const handleNextStep = () => {
-      if (currentStep === 1) {
-        if (formData.stepOne.name && formData.stepOne.email && formData.stepOne.phone) {
-          setCurrentStep(currentStep + 1)
-        } else {
-          setStepOneErrors(true)
-        }
-      } else if (currentStep === 2) {
-        if (formData.stepTwo.plan) {
+      switch (currentStep) {
+        case 1:
+          if (formData.stepOne.name && formData.stepOne.email && formData.stepOne.phone) {
+            setCurrentStep(currentStep + 1);
+          } else {
+            setStepOneErrors(true);
+          }
+          break;
+        case 2:
+          if (formData.stepTwo.plan) {
+            setCurrentStep(currentStep + 1);
+          } else {
+            setStepTwoErrors(true);
+          }
+          break;
+          
+        default:
           setCurrentStep(currentStep + 1);
-        } else {
-          setStepTwoErrors(true)
-        }
-      } else {
-        setCurrentStep(currentStep + 1);
+          break;
       }
     }
-    
+
     const handlePreviousStep = () => {
       setCurrentStep(currentStep - 1)
     }

@@ -14,15 +14,14 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
   const [errors, setErrors] = useState<{ name: string; email: string; phone: string }>({ name: '', email: '', phone: '' });
 
   const validateEmail = (email: string) => /\S+@\S+\.\S+/.test(email);
-  // @todo: fix phone number display/validation to work with () around area code
-  const validatePhone = (phone: string) => /^\d{3}-\d{3}-\d{4}$/.test(phone);
+  const validatePhone = (phone: string) => /^\(\d{3}\) \d{3}-\d{4}$/.test(phone);
 
   const formatPhoneNumber = (value: string) => {
-    const formatted = value.replace(/\D/g, '');
-
-    if (formatted.length < 4) return formatted;
-    if (formatted.length < 7) return `${formatted.slice(0, 3)}-${formatted.slice(3)}`;
-    return `${formatted.slice(0, 3)}-${formatted.slice(3, 6)}-${formatted.slice(6, 10)}`;
+    const cleaned = value.replace(/\D/g, '');
+  
+    if (cleaned.length < 4) return cleaned;
+    if (cleaned.length < 7) return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3)}`;
+    return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3, 6)}-${cleaned.slice(6, 10)}`;
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -37,9 +36,9 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
     }));
 
     if (name === 'email' && !validateEmail(value)) {
-      setErrors((prev) => ({ ...prev, email: 'Invalid email address' }));
+      setErrors((prev) => ({ ...prev, email: 'Enter a valid email (e.g. name@gmail.com)' }));
     } else if (name === 'phone' && !validatePhone(formatPhoneNumber(value))) {
-      setErrors((prev) => ({ ...prev, phone: 'Enter a valid number (e.g. 123-123-1122)' }));
+      setErrors((prev) => ({ ...prev, phone: 'Enter a valid number (e.g. (123) 123-1122)' }));
     } else {
       setErrors((prev) => ({ ...prev, [name]: '' })); 
     }
@@ -68,7 +67,7 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
             <span className="step-one-form__error">{errors.phone || 'This field is required'}</span>
           )}
           <label htmlFor="phone">Phone Number *</label>
-          <input type="text" id="phone" name="phone" placeholder="e.g. 123-123-1122" value={formPhone} onChange={handleChange} />
+          <input type="text" id="phone" name="phone" placeholder="e.g. (123) 123-1122" value={formPhone} onChange={handleChange} />
         </div>
       </form>
     </div>

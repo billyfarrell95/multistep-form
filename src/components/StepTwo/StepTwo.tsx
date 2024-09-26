@@ -2,7 +2,7 @@ import StepHeader from "../StepHeader/StepHeader";
 import PlanSelector from "./PlanSelector";
 import MonthlyYearlySelector from "./MonthlyYearlySelector";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { planDetails } from "../../App";
+import { planDetails } from "../../data/FormData";
 import "./StepTwo.css";
 
 interface StepTwoProps {

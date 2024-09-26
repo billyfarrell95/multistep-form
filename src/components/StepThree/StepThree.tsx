@@ -2,19 +2,19 @@ import "./StepThree.css";
 import AddonButton from "./AddonButton";
 import StepHeader from "../StepHeader/StepHeader";
 import { Dispatch, SetStateAction } from "react";
-import { addonDetails } from "../../App";
+import { addonDetails } from "../../data/FormData";
 
 interface StepThreeProps {
     setFormData: Dispatch<SetStateAction<{ stepOne: { name: string; email: string; phone: string; }; stepTwo: { plan: string; isYearly: boolean; }; stepThree: { onlineService: boolean; largerStorage: boolean; customizableProfile: boolean; }; }>>,
-    onlineService: boolean,
-    largerStorage: boolean,
-    customizableProfile: boolean,
+    isOnlineServiceSelected: boolean,
+    isLargerStorageSelected: boolean,
+    isCustomizableProfileSelected: boolean,
     isPlanYearly: boolean,
     totalCost: number,
     setTotalCost: Dispatch<SetStateAction<number>>,
 }
 
-function StepThree({ setFormData, onlineService, largerStorage, customizableProfile, isPlanYearly }: StepThreeProps) {
+function StepThree({ setFormData, isOnlineServiceSelected, isLargerStorageSelected, isCustomizableProfileSelected, isPlanYearly }: StepThreeProps) {
 
   return (
     <div>
@@ -26,7 +26,7 @@ function StepThree({ setFormData, onlineService, largerStorage, customizableProf
                 addonDescription="Access to multiplayer games"
                 addonPrice={isPlanYearly ? `$${addonDetails.online.yearly}/yr` : `$${addonDetails.online.monthly}/mo`}
                 setFormData={setFormData}
-                isPlanSelected={onlineService}
+                isPlanSelected={isOnlineServiceSelected}
             />
             <AddonButton
                 addonName="Larger Storage"
@@ -34,7 +34,7 @@ function StepThree({ setFormData, onlineService, largerStorage, customizableProf
                 addonDescription="Extra 1TB of cloud save"
                 addonPrice={isPlanYearly ? `$${addonDetails.storage.yearly}/yr` : `$${addonDetails.storage.monthly}/mo`}
                 setFormData={setFormData}
-                isPlanSelected={largerStorage}
+                isPlanSelected={isLargerStorageSelected}
             />
             <AddonButton
                 addonName="Customizable Profile"
@@ -42,7 +42,7 @@ function StepThree({ setFormData, onlineService, largerStorage, customizableProf
                 addonDescription="Custom theme on your profile"
                 addonPrice={isPlanYearly ? `$${addonDetails.profile.yearly}/yr` : `$${addonDetails.profile.monthly}/mo`}
                 setFormData={setFormData}
-                isPlanSelected={customizableProfile}
+                isPlanSelected={isCustomizableProfileSelected}
             />
         </div>
     </div>

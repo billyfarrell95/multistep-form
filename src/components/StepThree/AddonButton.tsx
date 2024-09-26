@@ -35,7 +35,13 @@ function AddonButton({checkboxId, addonName, addonDescription, addonPrice, setFo
   return (
     <button className="addon-btn" onClick={handleClick}>
         <div className="addon-btn__details">
-            <input type="checkbox" name={addonName} id={checkboxId} checked={isPlanSelected} onChange={handleChange} className="addon-btn__checkbox" />
+            <input 
+              type="checkbox" 
+              name={addonName} 
+              id={checkboxId} 
+              checked={isPlanSelected} 
+              onChange={handleChange} 
+              className="addon-btn__checkbox" />
             <div>
                 <p className="addon-btn__name">{addonName}</p>
                 <p className="addon-btn__description">{addonDescription}</p>
