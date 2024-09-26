@@ -6,13 +6,13 @@ import StepThree from './components/StepThree/StepThree';
 import StepFour from './components/StepFour/StepFour';
 import StepFive from './components/StepFive/StepFive';
 import FormControls from './components/FormControls/FormControls';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export const initialFormData = {
   stepOne: {
-    name: "Billy Farrell",
-    email: "billyfarrell95@gmail.com",
-    phone: "123-123-1231",
+    name: "",
+    email: "",
+    phone: "",
   },
   stepTwo: {
     plan: "",
@@ -30,10 +30,6 @@ function App() {
   const [formData, setFormData] = useState({ ...initialFormData });
   const [stepOneErrors, setStepOneErrors] = useState(false);
   const [stepTwoErrors, setStepTwoErrors] = useState(false);
-
-  useEffect(() => {
-    console.log("FORM DATA", formData)
-  }, [formData])
   
   return (
     <>
@@ -56,7 +52,11 @@ function App() {
                 setStepTwoErrors={setStepTwoErrors}   />
             )}
             {currentStep === 3 && (
-              <StepThree />
+              <StepThree 
+                setFormData={setFormData}
+                onlineService={formData.stepThree.onlineService} 
+                largerStorage={formData.stepThree.largerStorage}
+                customizableProfile={formData.stepThree.customizableProfile} />
             )}
             {currentStep === 4 && (
               <StepFour setCurrentStep={setCurrentStep} />

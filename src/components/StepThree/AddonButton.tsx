@@ -1,18 +1,41 @@
 import "./StepThree.css";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 interface AddonButtonProps {
     addonName: string,
     checkboxId: string,
     addonDescription: string,
     addonPrice: string,
-}
+    setFormData: Dispatch<SetStateAction<{ stepOne: { name: string; email: string; phone: string; }; stepTwo: { plan: string; isYearly: boolean; }; stepThree: { onlineService: boolean; largerStorage: boolean; customizableProfile: boolean; }; }>>,
+    isPlanSelected: boolean,
+  }
 
-function AddonButton({checkboxId, addonName, addonDescription, addonPrice}: AddonButtonProps) {
+function AddonButton({checkboxId, addonName, addonDescription, addonPrice, setFormData, isPlanSelected }: AddonButtonProps) {
+
+  const [isAddonSelected, setIsAddonSelected] = useState(false);
+
+  const handleChange = () => {
+    setIsAddonSelected(!isAddonSelected)
+  };
+
+  const handleClick = () => {
+    handleChange()
+  }
+
+  useEffect(() => {
+    setFormData((prevFormData) => ({
+      ...prevFormData, 
+      stepThree: {
+        ...prevFormData.stepThree, 
+        [checkboxId]: isAddonSelected,
+      }
+    }));
+  }, [isAddonSelected])
 
   return (
-    <button className="addon-btn">
+    <button className="addon-btn" onClick={handleClick}>
         <div className="addon-btn__details">
-            <input type="checkbox" name={addonName} id={checkboxId} className="addon-btn__checkbox" />
+            <input type="checkbox" name={addonName} id={checkboxId} checked={isPlanSelected} onChange={handleChange} className="addon-btn__checkbox" />
             <div>
                 <p className="addon-btn__name">{addonName}</p>
                 <p className="addon-btn__description">{addonDescription}</p>

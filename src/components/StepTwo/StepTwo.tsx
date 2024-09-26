@@ -26,6 +26,8 @@ const planDetails = {
   },
 };
 
+// @todo: form state is retained between switching steps (monthly/yearly)
+
 function StepTwo({ setFormData, formPlan, stepTwoErrors, setStepTwoErrors }: StepTwoProps) {
   const [isYearly, setIsYearly] = useState(false);
 
@@ -49,7 +51,7 @@ function StepTwo({ setFormData, formPlan, stepTwoErrors, setStepTwoErrors }: Ste
       }
     }));
   }, [isYearly])
-// @todo: handle monthly/yearly plan changes
+
   return (
     <div>
         <StepHeader title={"Select Your Plan"} description={"You have the option of monthly or yearly billing."} />

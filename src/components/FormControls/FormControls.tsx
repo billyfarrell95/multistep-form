@@ -17,14 +17,14 @@ function FormControls({ currentStep, setCurrentStep, formData, setStepOneErrors,
         } else {
           setStepOneErrors(true)
         }
-      }
-      if (currentStep === 2) {
-        console.log("two")
+      } else if (currentStep === 2) {
         if (formData.stepTwo.plan) {
           setCurrentStep(currentStep + 1);
         } else {
           setStepTwoErrors(true)
         }
+      } else {
+        setCurrentStep(currentStep + 1);
       }
     }
     
