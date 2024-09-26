@@ -6,18 +6,17 @@ import StepThree from './components/StepThree/StepThree';
 import StepFour from './components/StepFour/StepFour';
 import StepFive from './components/StepFive/StepFive';
 import FormControls from './components/FormControls/FormControls';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const initialFormData = {
   stepOne: {
-    name: "",
-    email: "",
-    phone: "",
+    name: "Billy Farrell",
+    email: "billyfarrell95@gmail.com",
+    phone: "123-123-1231",
   },
   stepTwo: {
     plan: "",
-    monthly: true,
-    yearly: false,
+    isYearly: false,
   },
   stepThree: {
     onlineService: false,
@@ -32,6 +31,10 @@ function App() {
   const [stepOneErrors, setStepOneErrors] = useState(false);
   const [stepTwoErrors, setStepTwoErrors] = useState(false);
 
+  useEffect(() => {
+    console.log("FORM DATA", formData)
+  }, [formData])
+  
   return (
     <>
       <div className="main-wrapper">

@@ -3,7 +3,7 @@ import StepHeader from "../StepHeader/StepHeader";
 import { Dispatch, SetStateAction, ChangeEvent, useState } from "react";
 
 interface StepOneProps {
-  setFormData: Dispatch<SetStateAction<{ stepOne: { name: string; email: string; phone: string; }; stepTwo: { plan: string; monthly: boolean; yearly: boolean; }; stepThree: { onlineService: boolean; largerStorage: boolean; customizableProfile: boolean; }; }>>,
+  setFormData: Dispatch<SetStateAction<{ stepOne: { name: string; email: string; phone: string; }; stepTwo: { plan: string; isYearly: boolean; }; stepThree: { onlineService: boolean; largerStorage: boolean; customizableProfile: boolean; }; }>>,
   formName: string,
   formEmail: string,
   formPhone: string,

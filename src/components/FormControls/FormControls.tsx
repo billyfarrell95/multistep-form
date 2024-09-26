@@ -4,7 +4,7 @@ import { SetStateAction, Dispatch } from "react";
 interface StepIndicatorProps {
   currentStep: number,
   setCurrentStep: Dispatch<SetStateAction<number>>,
-  formData: { stepOne: { name: string; email: string; phone: string; }; stepTwo: { plan: string; monthly: boolean; yearly: boolean; }; stepThree: { onlineService: boolean; largerStorage: boolean; customizableProfile: boolean; }; },
+  formData: { stepOne: { name: string; email: string; phone: string; }; stepTwo: { plan: string; isYearly: boolean; }; stepThree: { onlineService: boolean; largerStorage: boolean; customizableProfile: boolean; }; },
   setStepOneErrors: Dispatch<SetStateAction<boolean>>;
   setStepTwoErrors: Dispatch<SetStateAction<boolean>>;
 }
