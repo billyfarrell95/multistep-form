@@ -13,6 +13,10 @@
     margin-bottom: 1.5rem;
 }
 
+.step-one-form input.error {
+    border: 1px solid red;
+}
+
 @media screen and (min-width: 1300px) {
     .step-one-form input {
         font-size: 1.1rem;
@@ -26,7 +30,7 @@
 }
 
 .step-one-form input:hover {
-    border-color: var(--clr-dark-blue);
+    border-color: var(--clr-purple);
 }
 
 

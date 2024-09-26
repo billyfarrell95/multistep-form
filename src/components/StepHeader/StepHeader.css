@@ -3,7 +3,13 @@
 }
 
 .step-header {
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
+}
+
+@media screen and (min-width: 400px) {
+    .step-header {
+        padding-bottom: 2rem;
+    }
 }
 
 @media screen and (min-width: 1300px) {

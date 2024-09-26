@@ -43,17 +43,8 @@ body {
     color: var(--clr-dark-blue);
 }
 
-@media screen and (min-width: 1300px) {
-    body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100vh;
-    }
-}
-
 h2 {
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--clr-dark-blue);
@@ -66,7 +57,7 @@ button {
 }
 
 button.btn-fill {
-    padding-block: 1rem;
+    padding-block: 0.75rem;
     padding-inline: 1.6rem;
 }
 
@@ -76,4 +67,23 @@ button.btn-fill {
 
 p {
     line-height: 1.7rem;
+}
+
+@media screen and (min-width: 400px) {
+    h2 {
+        font-size: 2rem;
+    }
+    button.btn-fill {
+        padding-block: 1rem;
+        padding-inline: 1.6rem;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+    }
 }

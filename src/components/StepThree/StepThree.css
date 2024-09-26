@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 0.5rem;
     width: 100%;
     background-color: transparent;
     border: 1px solid var(--clr-light-gray);
@@ -37,10 +37,9 @@
 }
 
 .addon-btn__name {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--clr-dark-blue);
     font-weight: 700;
-    margin-bottom: 0.5rem;
     text-align: left;
 }
 
@@ -54,4 +53,18 @@
 .addon-btn__price {
     color: var(--clr-purple);
     font-weight: 400;
+}
+
+@media screen and (min-width: 400px) {
+    .addon-btn {
+        padding: 1rem;
+    }
+    .addon-btn__name {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--clr-dark-blue);
+        font-weight: 700;
+        text-align: left;
+    }
+    
 }

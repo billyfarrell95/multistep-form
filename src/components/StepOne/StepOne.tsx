@@ -53,21 +53,21 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
             <span className="step-one-form__error">This field is required</span>
           )}
           <label htmlFor="name">Name *</label>
-          <input type="text" id="name" name="name" placeholder="e.g. Your Name" onChange={handleChange} value={formName} />
+          <input type="text" id="name" name="name" placeholder="e.g. Your Name" onChange={handleChange} value={formName} className={stepOneErrors && formName.trim().length < 1 ? 'error' : ''} />
         </div>
         <div className="step-one-form__input-group">
           {stepOneErrors && (formEmail.trim().length < 1 || errors.email) && (
             <span className="step-one-form__error">{errors.email || 'This field is required'}</span>
           )}
           <label htmlFor="email">Email Address *</label>
-          <input type="text" id="email" name="email" placeholder="e.g. name@gmail.com" value={formEmail} onChange={handleChange} />
+          <input type="text" id="email" name="email" placeholder="e.g. name@gmail.com" value={formEmail} onChange={handleChange} className={stepOneErrors && (formEmail.trim().length < 1 || errors.email) ? 'error' : ''} />
         </div>
         <div className="step-one-form__input-group">
           {stepOneErrors && (formPhone.trim().length < 1 || errors.phone) && (
             <span className="step-one-form__error">{errors.phone || 'This field is required'}</span>
           )}
           <label htmlFor="phone">Phone Number *</label>
-          <input type="text" id="phone" name="phone" placeholder="e.g. (123) 123-1122" value={formPhone} onChange={handleChange} />
+          <input type="text" id="phone" name="phone" placeholder="e.g. (123) 123-1122" value={formPhone} onChange={handleChange} className={stepOneErrors && (formPhone.trim().length < 1 || errors.phone) ? 'error' : ''} />
         </div>
       </form>
     </div>

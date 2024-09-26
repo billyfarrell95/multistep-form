@@ -2,7 +2,7 @@
     background-image: url("../../assets/images/bg-sidebar-mobile.svg");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 175px;
+    height: 150px;
     color: white;
 }
 
@@ -35,6 +35,12 @@
 
 .step-indicator__description {
     display: none;
+}
+
+@media screen and (min-width: 400px) {
+    .sidebar {
+        height: 175px;
+    }
 }
 
 @media screen and (min-width: 1300px) {
