@@ -10,6 +10,8 @@ interface StepThreeProps {
     largerStorage: boolean,
     customizableProfile: boolean,
     isPlanYearly: boolean,
+    totalCost: number,
+    setTotalCost: Dispatch<SetStateAction<number>>,
 }
 
 function StepThree({ setFormData, onlineService, largerStorage, customizableProfile, isPlanYearly }: StepThreeProps) {

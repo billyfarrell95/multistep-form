@@ -6,7 +6,7 @@ import StepThree from './components/StepThree/StepThree';
 import StepFour from './components/StepFour/StepFour';
 import StepFive from './components/StepFive/StepFive';
 import FormControls from './components/FormControls/FormControls';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export const initialFormData = {
   stepOne: {
@@ -42,14 +42,20 @@ export const planDetails = {
 
 export const addonDetails = {
   online: {
+    name: "Online Service",
+    description: "Access to multiplayer games",
     monthly: 1,
     yearly: 10,
   },
   storage: {
+    name: "Larger Storage",
+    description: "Extra 1TB of cloud save",
     monthly: 2,
     yearly: 20,
   },
   profile: {
+    name: "Customizable Profile",
+    description: "Custom theme on your profile",
     monthly: 2,
     yearly: 20,
   },
@@ -60,11 +66,8 @@ function App() {
   const [formData, setFormData] = useState({ ...initialFormData });
   const [stepOneErrors, setStepOneErrors] = useState(false);
   const [stepTwoErrors, setStepTwoErrors] = useState(false);
+  const [totalCost, setTotalCost] = useState(0);
 
-  useEffect(() => {
-    console.log("FORM DATA", formData.stepTwo.isYearly)
-  }, [formData])
-  
   return (
     <>
       <div className="main-wrapper">
@@ -84,7 +87,9 @@ function App() {
                 setFormData={setFormData}
                 stepTwoErrors={stepTwoErrors}
                 setStepTwoErrors={setStepTwoErrors} 
-                isPlanYearly={formData.stepTwo.isYearly} />
+                isPlanYearly={formData.stepTwo.isYearly}
+                totalCost={totalCost}
+                setTotalCost={setTotalCost} />
             )}
             {currentStep === 3 && (
               <StepThree 
@@ -92,11 +97,18 @@ function App() {
                 onlineService={formData.stepThree.onlineService} 
                 largerStorage={formData.stepThree.largerStorage}
                 customizableProfile={formData.stepThree.customizableProfile}
-                isPlanYearly={formData.stepTwo.isYearly} />
+                isPlanYearly={formData.stepTwo.isYearly} 
+                totalCost={totalCost}
+                setTotalCost={setTotalCost} />
             )}
             {currentStep === 4 && (
               <StepFour 
-              setCurrentStep={setCurrentStep} />
+                setCurrentStep={setCurrentStep} 
+                planName={formData.stepTwo.plan}
+                onlineService={formData.stepThree.onlineService} 
+                largerStorage={formData.stepThree.largerStorage}
+                customizableProfile={formData.stepThree.customizableProfile}
+                isPlanYearly={formData.stepTwo.isYearly} />
             )}
             {currentStep === 5 && (
               <StepFive />

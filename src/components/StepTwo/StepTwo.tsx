@@ -11,6 +11,8 @@ interface StepTwoProps {
   stepTwoErrors: boolean
   setStepTwoErrors: Dispatch<SetStateAction<boolean>>,
   isPlanYearly: boolean,
+  totalCost: number,
+  setTotalCost: Dispatch<SetStateAction<number>>,
 }
 
 function StepTwo({ setFormData, formPlan, stepTwoErrors, setStepTwoErrors, isPlanYearly }: StepTwoProps) {
