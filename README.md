@@ -33,7 +33,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![Multi-step Form Screenshot](https://github.com/user-attachments/assets/fbd55d8f-b69d-4985-bb6c-57a48559b038)
 
 ### Links
 
