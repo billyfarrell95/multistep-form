@@ -4,6 +4,9 @@ import MonthlyYearlySelector from "./MonthlyYearlySelector";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { planDetails } from "../../data/FormData";
 import "./StepTwo.css";
+import arcadeIcon from "../../assets/images/icon-arcade.svg";
+import advacedIcon from "../../assets/images/icon-advanced.svg";
+import proIcon from "../../assets/images/icon-pro.svg";
 
 interface StepTwoProps {
   setFormData: Dispatch<SetStateAction<{ stepOne: { name: string; email: string; phone: string; }; stepTwo: { plan: string; isYearly: boolean; }; stepThree: { onlineService: boolean; largerStorage: boolean; customizableProfile: boolean; }; }>>,
@@ -46,9 +49,9 @@ function StepTwo({ setFormData, formPlan, stepTwoErrors, setStepTwoErrors, isPla
           <p className="error-message">Please select a plan:</p>
         )}
         <div className="plan-selector-wrapper">
-            <PlanSelector iconPath={"../../src/assets/images/icon-arcade.svg"} planName={"Arcade"} planPrice={isYearly ? planDetails.arcade.yearly : planDetails.arcade.monthly} handlePlanSelection={handlePlanSelection}  activePlan={formPlan} isYearly={isYearly} />
-            <PlanSelector iconPath={"../../src/assets/images/icon-advanced.svg"} planName={"Advanced"} planPrice={isYearly ? planDetails.advanced.yearly : planDetails.advanced.monthly} handlePlanSelection={handlePlanSelection} activePlan={formPlan} isYearly={isYearly} />
-            <PlanSelector iconPath={"../../src/assets/images/icon-pro.svg"} planName={"Pro"} planPrice={isYearly ? planDetails.pro.yearly : planDetails.pro.monthly} handlePlanSelection={handlePlanSelection} activePlan={formPlan} isYearly={isYearly} />
+            <PlanSelector iconPath={arcadeIcon} planName={"Arcade"} planPrice={isYearly ? planDetails.arcade.yearly : planDetails.arcade.monthly} handlePlanSelection={handlePlanSelection}  activePlan={formPlan} isYearly={isYearly} />
+            <PlanSelector iconPath={advacedIcon} planName={"Advanced"} planPrice={isYearly ? planDetails.advanced.yearly : planDetails.advanced.monthly} handlePlanSelection={handlePlanSelection} activePlan={formPlan} isYearly={isYearly} />
+            <PlanSelector iconPath={proIcon} planName={"Pro"} planPrice={isYearly ? planDetails.pro.yearly : planDetails.pro.monthly} handlePlanSelection={handlePlanSelection} activePlan={formPlan} isYearly={isYearly} />
         </div>
         <MonthlyYearlySelector isYearly={isYearly} setIsyearly={setIsYearly} />
     </div>
