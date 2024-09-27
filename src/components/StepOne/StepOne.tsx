@@ -1,6 +1,7 @@
 import "./StepOne.css";
 import StepHeader from "../StepHeader/StepHeader";
 import { Dispatch, SetStateAction, ChangeEvent, useState } from "react";
+import { validateEmail, validatePhone } from "../../utils/utils";
 
 interface StepOneProps {
   setFormData: Dispatch<SetStateAction<{ stepOne: { name: string; email: string; phone: string; }; stepTwo: { plan: string; isYearly: boolean; }; stepThree: { onlineService: boolean; largerStorage: boolean; customizableProfile: boolean; }; }>>,
@@ -12,10 +13,6 @@ interface StepOneProps {
 
 function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }: StepOneProps) {
   const [errors, setErrors] = useState<{ name: string; email: string; phone: string }>({ name: '', email: '', phone: '' });
-
-  const validateEmail = (email: string) => /\S+@\S+\.\S+/.test(email);
-  const validatePhone = (phone: string) => /^\(\d{3}\) \d{3}-\d{4}$/.test(phone);
-
   const formatPhoneNumber = (value: string) => {
     const cleaned = value.replace(/\D/g, '');
   
@@ -44,6 +41,13 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
     }
   };
 
+  const handleEmailValidation = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (name === 'email' && !validateEmail(value)) {
+      setErrors((prev) => ({ ...prev, email: 'Enter a valid email (e.g. name@gmail.com)' }));
+    }
+  }
+
   return (
     <div className="form-wrapper">
       <StepHeader title={"Personal Info"} description={"Please provide your name, email, address, and phone number."} />
@@ -60,7 +64,7 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
             <span className="step-one-form__error">{errors.email || 'This field is required'}</span>
           )}
           <label htmlFor="email">Email Address *</label>
-          <input type="text" id="email" name="email" placeholder="e.g. name@gmail.com" value={formEmail} onChange={handleChange} className={stepOneErrors && (formEmail.trim().length < 1 || errors.email) ? 'error' : ''} />
+          <input type="text" id="email" name="email" placeholder="e.g. name@gmail.com" value={formEmail} onChange={handleChange} onBlur={handleEmailValidation} className={stepOneErrors && (formEmail.trim().length < 1 || errors.email) ? 'error' : ''} />
         </div>
         <div className="step-one-form__input-group">
           {stepOneErrors && (formPhone.trim().length < 1 || errors.phone) && (
