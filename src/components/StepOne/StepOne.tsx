@@ -24,13 +24,24 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    setFormData((prevFormData) => ({
-      ...prevFormData, 
-      stepOne: {
-        ...prevFormData.stepOne, 
-        [name]: name === 'phone' ? formatPhoneNumber(value) : value,
-      }
-    }));
+    if (name === "phone") {
+      const formattedPhone = formatPhoneNumber(value);
+      setFormData((prevFormData) => ({
+        ...prevFormData, 
+        stepOne: {
+          ...prevFormData.stepOne, 
+          [name]: formattedPhone,
+        }
+      }));
+    } else {
+      setFormData((prevFormData) => ({
+        ...prevFormData, 
+        stepOne: {
+          ...prevFormData.stepOne, 
+          [name]: value,
+        }
+      }));
+    }
 
     if (name === 'email' && !validateEmail(value)) {
       setErrors((prev) => ({ ...prev, email: 'e.g. name@gmail.com' }));
