@@ -16,7 +16,7 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
   const formatPhoneNumber = (value: string) => {
     const cleaned = value.replace(/\D/g, '');
   
-    if (cleaned.length < 4) return cleaned;
+    if (cleaned.length < 3) return cleaned;
     if (cleaned.length < 7) return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3)}`;
     return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3, 6)}-${cleaned.slice(6, 10)}`;
   };
@@ -26,6 +26,7 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
 
     if (name === "phone") {
       const formattedPhone = formatPhoneNumber(value);
+      console.log(formattedPhone)
       setFormData((prevFormData) => ({
         ...prevFormData, 
         stepOne: {
@@ -34,6 +35,7 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
         }
       }));
     } else {
+      console.log(value)
       setFormData((prevFormData) => ({
         ...prevFormData, 
         stepOne: {
