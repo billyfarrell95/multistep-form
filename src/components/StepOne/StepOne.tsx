@@ -33,9 +33,9 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
     }));
 
     if (name === 'email' && !validateEmail(value)) {
-      setErrors((prev) => ({ ...prev, email: 'Enter a valid email (e.g. name@gmail.com)' }));
+      setErrors((prev) => ({ ...prev, email: 'e.g. name@gmail.com' }));
     } else if (name === 'phone' && !validatePhone(formatPhoneNumber(value))) {
-      setErrors((prev) => ({ ...prev, phone: 'Enter a valid number (e.g. (123) 123-1122)' }));
+      setErrors((prev) => ({ ...prev, phone: 'e.g. (123) 123-1122' }));
     } else {
       setErrors((prev) => ({ ...prev, [name]: '' })); 
     }
@@ -44,7 +44,7 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
   const handleEmailValidation = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     if (name === 'email' && !validateEmail(value)) {
-      setErrors((prev) => ({ ...prev, email: 'Enter a valid email (e.g. name@gmail.com)' }));
+      setErrors((prev) => ({ ...prev, email: 'e.g. name@gmail.com' }));
     }
   }
 
