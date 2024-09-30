@@ -71,7 +71,7 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
             <span className="step-one-form__error">{errors.phone || 'This field is required'}</span>
           )}
           <label htmlFor="phone">Phone Number *</label>
-          <input type="text" id="phone" name="phone" placeholder="e.g. (123) 123-1122" value={formPhone} onChange={handleChange} className={stepOneErrors && (formPhone.trim().length < 1 || errors.phone) ? 'error' : ''} />
+          <input type="tel" id="phone" name="phone" placeholder="e.g. (123) 123-1122" value={formPhone} onChange={handleChange} className={stepOneErrors && (formPhone.trim().length < 1 || errors.phone) ? 'error' : ''} />
         </div>
       </form>
     </div>
