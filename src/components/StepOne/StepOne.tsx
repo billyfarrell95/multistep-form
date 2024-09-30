@@ -16,7 +16,7 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
   const formatPhoneNumber = (value: string) => {
     const cleaned = value.replace(/\D/g, '');
   
-    if (cleaned.length < 3) return cleaned;
+    if (cleaned.length < 4) return cleaned;
     if (cleaned.length < 7) return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3)}`;
     return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3, 6)}-${cleaned.slice(6, 10)}`;
   };
@@ -24,26 +24,13 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    if (name === "phone") {
-      const formattedPhone = formatPhoneNumber(value);
-      console.log(formattedPhone)
-      setFormData((prevFormData) => ({
-        ...prevFormData, 
-        stepOne: {
-          ...prevFormData.stepOne, 
-          [name]: formattedPhone,
-        }
-      }));
-    } else {
-      console.log(value)
-      setFormData((prevFormData) => ({
-        ...prevFormData, 
-        stepOne: {
-          ...prevFormData.stepOne, 
-          [name]: value,
-        }
-      }));
-    }
+    setFormData((prevFormData) => ({
+      ...prevFormData, 
+      stepOne: {
+        ...prevFormData.stepOne, 
+        [name]: name === 'phone' ? formatPhoneNumber(value) : value,
+      }
+    }));
 
     if (name === 'email' && !validateEmail(value)) {
       setErrors((prev) => ({ ...prev, email: 'e.g. name@gmail.com' }));
@@ -84,7 +71,7 @@ function StepOne({ setFormData, formName, formEmail, formPhone, stepOneErrors }:
             <span className="step-one-form__error">{errors.phone || 'This field is required'}</span>
           )}
           <label htmlFor="phone">Phone Number *</label>
-          <input type="tel" id="phone" name="phone" placeholder="e.g. (123) 123-1122" value={formPhone} onChange={handleChange} className={stepOneErrors && (formPhone.trim().length < 1 || errors.phone) ? 'error' : ''} />
+          <input type="text" id="phone" name="phone" placeholder="e.g. (123) 123-1122" value={formPhone} onChange={handleChange} className={stepOneErrors && (formPhone.trim().length < 1 || errors.phone) ? 'error' : ''} />
         </div>
       </form>
     </div>
