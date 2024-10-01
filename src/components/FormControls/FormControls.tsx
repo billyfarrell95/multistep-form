@@ -1,6 +1,6 @@
 import "./FormControls.css";
 import { SetStateAction, Dispatch } from "react";
-import { validateEmail } from "../../utils/utils";
+import { validateEmail, validatePhone } from "../../utils/utils";
 
 interface StepIndicatorProps {
   currentStep: number,
@@ -14,7 +14,7 @@ function FormControls({ currentStep, setCurrentStep, formData, setStepOneErrors,
     const handleNextStep = () => {
       switch (currentStep) {
         case 1:
-          if (formData.stepOne.name && formData.stepOne.email && formData.stepOne.phone && validateEmail(formData.stepOne.email)) {
+          if (formData.stepOne.name && formData.stepOne.email && formData.stepOne.phone && validateEmail(formData.stepOne.email) && validatePhone(formData.stepOne.phone)) {
             setCurrentStep(currentStep + 1);
           } else {
             setStepOneErrors(true);
